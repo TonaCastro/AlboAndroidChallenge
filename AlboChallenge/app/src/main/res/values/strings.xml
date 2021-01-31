@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AlboChallenge</string>
+
+    <!-- Home -->
+    <string name="home_text_title">Albo Challenge</string>
+    <string name="home_btntitle_transactions">Transactions</string>
+    <string name="home_btntitle_api">Punk API</string>
+</resources>

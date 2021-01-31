@@ -1,0 +1,93 @@
+<resources>
+
+    <!-- Text Views-->
+    <style name="titleWhiteText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_header</item>
+    </style>
+
+    <style name="bodyWhiteText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="bodySmallWhiteText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_body_small</item>
+    </style>
+
+    <style name="subTitleBlueText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_text</item>
+        <item name="android:textSize">@dimen/text_subtittle</item>
+    </style>
+
+    <style name="titleBlueText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_text</item>
+        <item name="android:textSize">@dimen/text_tittle</item>
+    </style>
+
+    <style name="bodyBlueText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/blue_text</item>
+        <item name="android:textSize">@dimen/text_subtittle_small</item>
+    </style>
+
+    <style name="bodyGrayBoldText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="subTitleGrayText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_ligth</item>
+        <item name="android:textSize">@dimen/text_subtittle</item>
+    </style>
+
+    <style name="bodyGrayText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_ligth</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="bodySmallGrayText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_ligth</item>
+        <item name="android:textSize">@dimen/text_body_small</item>
+    </style>
+
+    <style name="bodyDarkText" parent="Base.TextAppearance.AppCompat">
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="TextInputStyleGray" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">@dimen/text_body_small</item>
+    </style>
+
+    <!-- Buttons-->
+
+    <style name="ButtonCompleteStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorControlHighlight">@color/purple_ligth</item>
+        <item name="colorButtonNormal">@color/blue</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:height">@dimen/button_height</item>
+    </style>
+
+
+    <style name="ButtonBorderlessPositive" parent="@android:style/Widget.Material.Light.Button.Borderless.Colored">
+        <item name="android:textColor">@color/orange</item>
+        <item name="colorControlHighlight">@color/orange</item>
+        <item name="android:height">@dimen/button_height</item>
+    </style>
+
+
+    <style name="ButtonTextPrimary" parent="@style/Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="cardWhiteGreen" parent="@style/Widget.MaterialComponents.CardView">
+
+    </style>
+
+
+
+</resources>
