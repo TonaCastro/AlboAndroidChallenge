@@ -43,10 +43,10 @@ class TransactionFragment : Fragment() {
     }
 
     private fun manageObservers() {
-        getMonthTransaction()
+        goToScreens()
     }
 
-    private fun getMonthTransaction() {
+    private fun goToScreens() {
 
     }
 }

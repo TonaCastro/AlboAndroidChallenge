@@ -10,4 +10,6 @@
     <string name="text_incomes">Ingresos</string>
     <string name="text_expenses">Gastos</string>
     <string name="total_format">$%d</string>
+    <string name="text_options_title">Opciones</string>
+    <string name="text_title_transactions">Transacciones</string>
 </resources>
