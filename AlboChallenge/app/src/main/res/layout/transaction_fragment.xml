@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="viewmodel"
+        type="com.tonatiuhcastro.albochallenge.transactions.presentation.viewmodel.TransactionViewModel" />
+</data>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transactions.presentation.view.TransactionFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_month_resume_rvcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_month_resume"
+        />
+</FrameLayout>
+</layout>

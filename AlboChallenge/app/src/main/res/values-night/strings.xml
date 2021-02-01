@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_pending_transactions">Transacciones pendientes</string>
+    <string name="text_rejected_transactions">Transacciones bloqueadas</string>
+    <string name="text_incomes">Ingresos</string>
+    <string name="text_expenses">Gastos</string>
+</resources>

@@ -1,7 +1,7 @@
 package com.tonatiuhcastro.albochallenge.transactions.domain.repository
 
 import androidx.lifecycle.LiveData
-import com.tonatiuhcastro.albochallenge.common.domain.Resource
+import com.tonatiuhcastro.albochallenge.common.domain.Result
 import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionModel
 
 /**
@@ -13,5 +13,5 @@ import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionMod
  * @modified by
  */
 interface TransactionRepository {
-    suspend fun getListTransactions(): LiveData<Resource<List<TransactionModel>>>
+    suspend fun getListTransactions(): LiveData<Result<List<TransactionModel>>>
 }

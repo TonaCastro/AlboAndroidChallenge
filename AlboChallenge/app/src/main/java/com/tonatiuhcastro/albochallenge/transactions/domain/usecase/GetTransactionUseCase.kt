@@ -1,6 +1,7 @@
 package com.tonatiuhcastro.albochallenge.transactions.domain.usecase
 
 import androidx.lifecycle.LiveData
+import com.tonatiuhcastro.albochallenge.transactions.domain.repository.TransactionRepository
 
 /**
  * @author tonatiuh
@@ -10,8 +11,8 @@ import androidx.lifecycle.LiveData
  * @updated on
  * @modified by
  */
-class GetTransactionUseCase {
+class GetTransactionUseCase(private val repository: TransactionRepository) {
     suspend fun execute() {
-        
+        repository.getListTransactions()
     }
 }

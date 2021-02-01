@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.tonatiuhcastro.albochallenge.transactions.presentation.viewmodel.TransactionViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_vertical_spacing"
+        android:clickable="true"
+        android:focusable="true"
+        android:checkable="true"
+        app:cardCornerRadius="@dimen/padding_spacing_top"
+        app:cardElevation="@dimen/elevation"
+        android:theme="@style/Theme.MaterialComponents.Light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_vertical_spacing">
+
+            <TextView
+                android:id="@+id/item_month_tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Enero:"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTotalPending"
+                android:layout_width="@dimen/textview_width_size"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_vertical_spacing"
+                android:layout_marginStart="@dimen/card_margin"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="20"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTitlePending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_vertical_spacing"
+                android:layout_marginStart="@dimen/medium_vertical_spacing"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTitle"
+                app:layout_constraintStart_toEndOf="@id/item_month_tvTotalPending"
+                android:text="@string/text_pending_transactions"
+                tools:text="Transacciones pendientes"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTotalBlocked"
+                android:layout_width="@dimen/textview_width_size"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_vertical_spacing"
+                android:layout_marginStart="@dimen/card_margin"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTitlePending"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="30"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTitleBlocked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_vertical_spacing"
+                android:layout_marginStart="@dimen/medium_vertical_spacing"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTitlePending"
+                app:layout_constraintStart_toEndOf="@id/item_month_tvTotalBlocked"
+                android:text="@string/text_rejected_transactions"
+                tools:text="Bloqueadas"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTotalIncomes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/card_margin"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTotalBlocked"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="$ 3034"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTitleIncomes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_vertical_spacing"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/medium_vertical_spacing"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTotalBlocked"
+                app:layout_constraintStart_toEndOf="@id/item_month_tvTotalIncomes"
+                android:text="@string/text_incomes"
+                tools:text="Ingresos"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTotalExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/card_margin"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTotalIncomes"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="$ 32934"/>
+
+            <TextView
+                android:id="@+id/item_month_tvTitleExpense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_vertical_spacing"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/medium_vertical_spacing"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTotalIncomes"
+                app:layout_constraintStart_toEndOf="@id/item_month_tvTotalExpense"
+                android:text="@string/text_expenses"
+                tools:text="Gastos"/>
+
+            <LinearLayout
+                android:id="@+id/item_month_llExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_vertical_spacing"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginStart="@dimen/expenses_marging_left"
+                app:layout_constraintTop_toBottomOf="@id/item_month_tvTitleExpense"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+</layout>

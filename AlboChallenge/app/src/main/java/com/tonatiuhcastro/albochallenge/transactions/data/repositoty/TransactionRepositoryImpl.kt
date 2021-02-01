@@ -3,12 +3,13 @@ package com.tonatiuhcastro.albochallenge.transactions.data.repositoty
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tonatiuhcastro.albochallenge.common.constants.NetworkConstants
-import com.tonatiuhcastro.albochallenge.common.domain.Resource
+import com.tonatiuhcastro.albochallenge.common.domain.Result
+import com.tonatiuhcastro.albochallenge.common.domain.ResultException
+import com.tonatiuhcastro.albochallenge.common.domain.ValidationError
 import com.tonatiuhcastro.albochallenge.transactions.data.network.manager.TransactionNetworkImpl
 import com.tonatiuhcastro.albochallenge.transactions.data.network.response.toTransactionModel
 import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionModel
 import com.tonatiuhcastro.albochallenge.transactions.domain.repository.TransactionRepository
-import retrofit2.HttpException
 import java.lang.Exception
 
 /**
@@ -20,9 +21,9 @@ import java.lang.Exception
  * @modified by
  */
 class TransactionRepositoryImpl: TransactionRepository {
-    override suspend fun getListTransactions(): LiveData<Resource<List<TransactionModel>>> {
+    override suspend fun getListTransactions(): LiveData<Result<List<TransactionModel>>> {
 
-        val data = MutableLiveData<Resource<List<TransactionModel>>>()
+        val data = MutableLiveData<Result<List<TransactionModel>>>()
         try {
             val serviceNetwork = TransactionNetworkImpl()
             serviceNetwork.onCreateConnection(NetworkConstants.HOST_TRANSACTIONS)
@@ -30,9 +31,9 @@ class TransactionRepositoryImpl: TransactionRepository {
             val listTransactions: List<TransactionModel>? = serviceResponse.listTransactions?.map {
                 it.toTransactionModel()
             }
-            data.value = Resource.success(listTransactions)
+            data.value = Result.success(listTransactions)
         } catch (exception: Exception){
-            data.value = Resource.exception(exception)
+            data.value = Result.exception(ResultException(ValidationError.EXCEPTION,"",exception))
         }
         return data
     }
