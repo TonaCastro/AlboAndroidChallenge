@@ -8,7 +8,7 @@ package com.tonatiuhcastro.albochallenge.common.domain
  * @updated on
  * @modified by
  */
-class Result<T> private constructor(val status: Status, val data: T?, val exception: ResultException?) {
+class Result<T> private constructor(var status: Status, var data: T?, var exception: ResultException?) {
         enum class Status {
             SUCCESS, LOADING, EXCEPTION
         }

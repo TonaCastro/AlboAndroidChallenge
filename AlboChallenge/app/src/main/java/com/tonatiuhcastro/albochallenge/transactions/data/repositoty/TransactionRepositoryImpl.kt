@@ -28,7 +28,7 @@ class TransactionRepositoryImpl: TransactionRepository {
             val serviceNetwork = TransactionNetworkImpl()
             serviceNetwork.onCreateConnection(NetworkConstants.HOST_TRANSACTIONS)
             val serviceResponse = serviceNetwork.getTransactions()
-            val listTransactions: List<TransactionModel>? = serviceResponse.listTransactions?.map {
+            val listTransactions: List<TransactionModel>? = serviceResponse?.map {
                 it.toTransactionModel()
             }
             data.value = Result.success(listTransactions)

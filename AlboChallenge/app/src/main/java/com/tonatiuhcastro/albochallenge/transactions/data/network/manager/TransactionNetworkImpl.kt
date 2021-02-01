@@ -1,7 +1,7 @@
 package com.tonatiuhcastro.albochallenge.transactions.data.network.manager
 
 import com.tonatiuhcastro.albochallenge.common.network.NetworkConnectionImpl
-import com.tonatiuhcastro.albochallenge.transactions.data.network.response.TransactionsResponse
+import com.tonatiuhcastro.albochallenge.transactions.data.network.response.TransactionResponse
 
 /**
  * @author tonatiuh
@@ -13,7 +13,7 @@ import com.tonatiuhcastro.albochallenge.transactions.data.network.response.Trans
  */
 class TransactionNetworkImpl: NetworkConnectionImpl() {
 
-    suspend fun getTransactions(): TransactionsResponse {
+    suspend fun getTransactions(): List<TransactionResponse> {
         return retrofit.create(TransactionNetwork::class.java).getTransactions()
     }
 

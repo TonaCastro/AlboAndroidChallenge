@@ -8,11 +8,11 @@ package com.tonatiuhcastro.albochallenge.transactions.presentation.model
  * @updated on
  * @modified by
  */
-data class TransactionData(var month: String,
-                           var totalRejected : Int,
-                           var totalPending: Int,
-                           var totalIncomes: Double,
-                           var totalExpenses: Double,
-                           var spends: List<TransactionSpendData>?)
+data class TransactionData(var month: String = "",
+                           var totalRejected : Int = 0,
+                           var totalPending: Int = 0,
+                           var totalIncomes: Double = 0.0,
+                           var totalExpenses: Double = 0.0,
+                           var spends: List<TransactionSpendData>? = null)
 
 data class TransactionSpendData(var kind: String, var amount: Double)

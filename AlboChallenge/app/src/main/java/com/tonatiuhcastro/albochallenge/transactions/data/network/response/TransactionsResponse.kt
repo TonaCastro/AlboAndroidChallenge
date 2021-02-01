@@ -13,10 +13,6 @@ import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionMod
  * @modified by
  */
 
-data class TransactionsResponse (
-    @SerializedName("") val listTransactions: List<TransactionResponse>?,
-)
-
 data class TransactionResponse (
     @SerializedName("uuid") val uuid: Long?,
     @SerializedName("description") val description: String?,
@@ -28,7 +24,7 @@ data class TransactionResponse (
     )
 
 fun TransactionResponse.toTransactionModel() = TransactionModel(category ?: "",
-    operation.value(),
-    status.value(),
-    status.value(),
+    operation ?: "",
+    status ?: "",
+    status ?: "",
     amount ?: 0.00)
