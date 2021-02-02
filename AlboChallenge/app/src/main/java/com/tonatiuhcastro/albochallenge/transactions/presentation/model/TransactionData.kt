@@ -14,6 +14,6 @@ data class TransactionData(var month: String = "",
                            var totalPending: Int = 0,
                            var totalIncomes: Double = 0.0,
                            var totalExpenses: Double = 0.0,
-                           var spends: List<TransactionSpendData>? = null)
+                           var expenses: ArrayList<TransactionSpendData> = ArrayList())
 
-data class TransactionSpendData(var kind: String, var amount: Double)
+data class TransactionSpendData(var kind: String = "", var amount: Double = 0.0)

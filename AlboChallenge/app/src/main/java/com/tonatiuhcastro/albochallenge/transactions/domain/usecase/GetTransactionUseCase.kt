@@ -2,13 +2,13 @@ package com.tonatiuhcastro.albochallenge.transactions.domain.usecase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import com.tonatiuhcastro.albochallenge.common.domain.Result
 import com.tonatiuhcastro.albochallenge.common.presentation.StatusTransaction
 import com.tonatiuhcastro.albochallenge.common.utils.UtilsDate
 import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionModel
 import com.tonatiuhcastro.albochallenge.transactions.domain.repository.TransactionRepository
 import com.tonatiuhcastro.albochallenge.transactions.presentation.model.TransactionData
+import com.tonatiuhcastro.albochallenge.transactions.presentation.model.TransactionSpendData
 
 /**
  * @author tonatiuh
@@ -74,5 +74,12 @@ class GetTransactionUseCase(private val repository: TransactionRepository) {
 
     private fun calculateExpenses(transactionData: TransactionData, model: TransactionModel) {
         transactionData.totalExpenses += model.amount
+        var expendData = transactionData.expenses.find { it.kind == model.category }
+        if (expendData == null) {
+            expendData = TransactionSpendData()
+            expendData.kind = model.category
+            transactionData.expenses.add(expendData)
+        }
+        expendData.amount += model.amount
     }
 }

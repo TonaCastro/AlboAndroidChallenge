@@ -119,8 +119,8 @@
                 android:text="@string/text_expenses"
                 tools:text="Gastos"/>
 
-            <LinearLayout
-                android:id="@+id/item_month_llExpenses"
+            <TextView
+                android:id="@+id/item_month_tvExpenses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/medium_vertical_spacing"

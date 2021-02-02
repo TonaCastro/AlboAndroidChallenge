@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tonatiuhcastro.albochallenge.R
 import com.tonatiuhcastro.albochallenge.databinding.ItemMonthResumeBinding
 import com.tonatiuhcastro.albochallenge.transactions.presentation.model.TransactionData
+import java.lang.StringBuilder
 
 /**
  * @author tonatiuh
@@ -33,6 +34,15 @@ class TransactionsAdapter(private val transactions: List<TransactionData>, priva
         holder.binding.itemMonthTvTotalPending.text = transaction.totalPending.toString()
         holder.binding.itemMonthTvTotalIncomes.text = String.format("$ %.2f", transaction.totalIncomes)
         holder.binding.itemMonthTvTotalExpense.text = String.format("$ %.2f", transaction.totalExpenses)
+        val expences = StringBuilder()
+        transaction.expenses.forEach() {
+            expences.append(it.kind.padEnd((50 - it.kind.length), ' '))
+            expences.append("%")
+            expences.append(String.format("%.1f", ((it.amount / transaction.totalExpenses ) * 100) ) )
+            expences.append("\n")
+        }
+        holder.binding.itemMonthTvExpenses.text = expences
+
     }
 
     override fun getItemCount(): Int = transactions.size
