@@ -10,6 +10,6 @@ package com.tonatiuhcastro.albochallenge.common.presentation
  */
 enum class StatusTransaction {
     done,
-    pendind,
+    pending,
     rejected
 }

@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tonatiuhcastro.albochallenge.R
 import com.tonatiuhcastro.albochallenge.databinding.TransactionFragmentBinding
+import com.tonatiuhcastro.albochallenge.transactions.presentation.adapter.TransactionsAdapter
 import com.tonatiuhcastro.albochallenge.transactions.presentation.factory.TransactionViewModelFactory
 import com.tonatiuhcastro.albochallenge.transactions.presentation.viewmodel.TransactionViewModel
 
@@ -44,8 +45,17 @@ class TransactionFragment : Fragment() {
 
     private fun manageObservers() {
         goToScreens()
+        getTransactions()
     }
 
+    private fun getTransactions() {
+        viewModel.getTransactionsLiveData().observe(viewLifecycleOwner, { list ->
+            list?.let { listData ->
+                val adapter = context?.let { it -> TransactionsAdapter(listData, it) }
+                binding.listMonthResumeRvcontainer.adapter = adapter
+            }
+        })
+    }
     private fun goToScreens() {
 
     }

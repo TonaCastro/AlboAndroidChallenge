@@ -1,6 +1,8 @@
 package com.tonatiuhcastro.albochallenge.transactions.domain.usecase
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import com.tonatiuhcastro.albochallenge.common.domain.Result
 import com.tonatiuhcastro.albochallenge.common.presentation.StatusTransaction
 import com.tonatiuhcastro.albochallenge.common.utils.UtilsDate
@@ -17,16 +19,19 @@ import com.tonatiuhcastro.albochallenge.transactions.presentation.model.Transact
  * @modified by
  */
 class GetTransactionUseCase(private val repository: TransactionRepository) {
-    suspend fun execute() {
+    suspend fun execute(): LiveData<Result<List<TransactionData>>> {
         val result = repository.getListTransactions()
+        val data = MutableLiveData<Result<List<TransactionData>>>()
         if (result.value?.status == Result.Status.EXCEPTION ) {
-            //TODO: error
+            data.value = Result.exception(result.value?.exception)
         } else {
             val listData = ArrayList<TransactionData>()
-            result.value?.data?.forEach() {
+            result.value?.data?.forEach {
                 processTransaction(listData, it)
             }
+            data.value = Result.success(listData.sortedBy { it.monthNumber })
         }
+        return data
     }
 
     private fun processTransaction(listData: ArrayList<TransactionData>, model: TransactionModel): TransactionData {
@@ -36,7 +41,8 @@ class GetTransactionUseCase(private val repository: TransactionRepository) {
 
         if (transactionData == null) {
             transactionData = TransactionData()
-
+            transactionData.monthNumber = UtilsDate().stringToFormatMonthNumber(model.creationDate)
+            transactionData.month = UtilsDate().stringToFormatDateMonth(model.creationDate)
             listData.add(transactionData)
         }
 
@@ -54,7 +60,7 @@ class GetTransactionUseCase(private val repository: TransactionRepository) {
             StatusTransaction.rejected.name -> {
                 transactionData.totalRejected +=1
             }
-            StatusTransaction.pendind.name -> {
+            StatusTransaction.pending.name -> {
                 transactionData.totalPending +=1
             }
         }

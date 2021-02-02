@@ -31,10 +31,8 @@ class TransactionsAdapter(private val transactions: List<TransactionData>, priva
         holder.binding.itemMonthTvTitle.text =  transaction.month + ":"
         holder.binding.itemMonthTvTotalBlocked.text = transaction.totalRejected.toString()
         holder.binding.itemMonthTvTotalPending.text = transaction.totalPending.toString()
-        holder.binding.itemMonthTvTotalIncomes.text =
-            context.getString(R.string.total_format, transaction.totalIncomes )
-        holder.binding.itemMonthTvTotalExpense.text =
-            context.getString(R.string.total_format, transaction.totalExpenses )
+        holder.binding.itemMonthTvTotalIncomes.text = String.format("$ %.2f", transaction.totalIncomes)
+        holder.binding.itemMonthTvTotalExpense.text = String.format("$ %.2f", transaction.totalExpenses)
     }
 
     override fun getItemCount(): Int = transactions.size

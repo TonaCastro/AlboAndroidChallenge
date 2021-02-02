@@ -18,7 +18,7 @@ class UtilsDate {
     @SuppressLint("SimpleDateFormat")
     fun stringToFormatDateMonth(stringDate: String): String {
         if (stringDate != "") {
-            val formatter = SimpleDateFormat("MMM")
+            val formatter = SimpleDateFormat("MMMM")
             val date = parser.parse(stringDate)
             date?.let {
                 return  formatter.format(it)
@@ -26,4 +26,17 @@ class UtilsDate {
         }
         return ""
     }
+
+    @SuppressLint("SimpleDateFormat")
+    fun stringToFormatMonthNumber(stringDate: String): Int {
+        if (stringDate != "") {
+            val formatter = SimpleDateFormat("M")
+            val date = parser.parse(stringDate)
+            date?.let {
+                return  formatter.format(it).toInt()
+            }
+        }
+        return 0
+    }
+
 }

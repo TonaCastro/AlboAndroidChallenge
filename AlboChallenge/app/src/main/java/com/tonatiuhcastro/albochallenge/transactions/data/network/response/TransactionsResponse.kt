@@ -26,5 +26,5 @@ data class TransactionResponse (
 fun TransactionResponse.toTransactionModel() = TransactionModel(category ?: "",
     operation ?: "",
     status ?: "",
-    status ?: "",
+    creationDate ?: "",
     amount ?: 0.00)

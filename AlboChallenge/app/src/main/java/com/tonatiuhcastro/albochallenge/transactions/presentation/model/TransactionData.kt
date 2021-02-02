@@ -9,6 +9,7 @@ package com.tonatiuhcastro.albochallenge.transactions.presentation.model
  * @modified by
  */
 data class TransactionData(var month: String = "",
+                           var monthNumber: Int = 0,
                            var totalRejected : Int = 0,
                            var totalPending: Int = 0,
                            var totalIncomes: Double = 0.0,

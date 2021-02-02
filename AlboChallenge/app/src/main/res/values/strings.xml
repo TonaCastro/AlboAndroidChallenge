@@ -6,7 +6,7 @@
     <string name="home_btntitle_transactions">Transactions</string>
     <string name="home_btntitle_api">Punk API</string>
     <string name="text_pending_transactions">Transacciones pendientes</string>
-    <string name="text_rejected_transactions">Transacciones bloqueadas</string>
+    <string name="text_rejected_transactions">Bloqueadas</string>
     <string name="text_incomes">Ingresos</string>
     <string name="text_expenses">Gastos</string>
     <string name="total_format">$%d</string>
