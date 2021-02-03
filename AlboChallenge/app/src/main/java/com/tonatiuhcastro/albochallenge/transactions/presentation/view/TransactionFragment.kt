@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import com.tonatiuhcastro.albochallenge.R
 import com.tonatiuhcastro.albochallenge.databinding.TransactionFragmentBinding
 import com.tonatiuhcastro.albochallenge.transactions.presentation.adapter.TransactionsAdapter
@@ -56,6 +55,7 @@ class TransactionFragment : Fragment() {
             }
         })
     }
+
     private fun goToScreens() {
 
     }

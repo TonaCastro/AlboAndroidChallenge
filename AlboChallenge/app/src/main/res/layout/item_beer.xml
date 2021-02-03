@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.tonatiuhcastro.albochallenge.punkapi.presentation.viewmodel.BeersListViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_vertical_spacing"
+        android:clickable="true"
+        android:focusable="true"
+        android:checkable="true"
+        app:cardCornerRadius="@dimen/padding_spacing_top"
+        app:cardElevation="@dimen/elevation"
+        android:theme="@style/Theme.MaterialComponents.Light">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_vertical_spacing">
+
+            <ImageView
+                android:id="@+id/item_beer_imgbeer"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+            <TextView
+                android:id="@+id/item_beer_tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/item_beer_imgbeer"
+                tools:text="Blue moon"/>
+
+            <TextView
+                android:id="@+id/item_month_tvtagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/medium_vertical_spacing"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                app:layout_constraintTop_toBottomOf="@id/item_beer_tvName"
+                app:layout_constraintStart_toEndOf="@id/item_beer_imgbeer"
+                tools:text="A Real Bitter Experience."/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

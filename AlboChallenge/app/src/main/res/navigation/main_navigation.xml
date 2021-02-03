@@ -17,4 +17,16 @@
         android:label="@string/text_title_transactions"
         tools:layout="@layout/transaction_fragment" />
 
+    <fragment
+        android:id="@+id/nav_beers"
+        android:name="com.tonatiuhcastro.albochallenge.punkapi.presentation.view.BeersListFragment"
+        android:label="Lista de cervezas"
+        tools:layout="@layout/beers_list_fragment" />
+
+    <fragment
+        android:id="@+id/nav_beer_detail"
+        android:name="com.tonatiuhcastro.albochallenge.punkapi.presentation.view.BeerDetailFragment"
+        android:label="Cervezas"
+        tools:layout="@layout/beer_detail_fragment" />
+
 </navigation>

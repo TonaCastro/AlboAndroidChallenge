@@ -54,7 +54,7 @@ class HomeFragment : Fragment() {
 
             when(it) {
                 Screens.TRANSACTIONS -> findNavController().navigate(R.id.nav_transactions)
-                Screens.PUNKAPI_LIST -> findNavController().navigate(R.id.nav_transactions)
+                Screens.PUNKAPI_LIST -> findNavController().navigate(R.id.nav_beers)
             }
 
         })
