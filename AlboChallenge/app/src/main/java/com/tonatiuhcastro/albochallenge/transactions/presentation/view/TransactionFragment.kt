@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.tonatiuhcastro.albochallenge.R
 import com.tonatiuhcastro.albochallenge.databinding.TransactionFragmentBinding
 import com.tonatiuhcastro.albochallenge.transactions.presentation.adapter.TransactionsAdapter
@@ -21,6 +23,13 @@ class TransactionFragment : Fragment() {
 
     private lateinit var viewModel: TransactionViewModel
     private lateinit var binding: TransactionFragmentBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().navigate(R.id.nav_home)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
