@@ -14,13 +14,27 @@ class BeersListViewModel(private val beerUseCase: BeerUseCase) : ViewModel() {
 
     var viewStateData: MutableLiveData<ViewState> = MutableLiveData()
     private var beersLiveData: MutableLiveData<List<BeerData>?> = MutableLiveData()
+    private var swipeRefreshLiveData: MutableLiveData<Boolean> = MutableLiveData()
+
+    private var currentPage = 1
+    private  var itemsPage = 10
 
     init {
-        getBeers(1,20)
+        getBeers(currentPage,itemsPage)
     }
 
     fun getBeersLiveData(): LiveData<List<BeerData>?> {
         return beersLiveData
+    }
+
+    fun getSwipeRefreshLiveData(): LiveData<Boolean> {
+        return swipeRefreshLiveData
+    }
+
+    fun onRefresh() {
+        currentPage += 1
+        getBeers(currentPage, itemsPage)
+        swipeRefreshLiveData.value = false
     }
 
     private fun getBeers(page: Int, items: Int) {
@@ -30,6 +44,8 @@ class BeersListViewModel(private val beerUseCase: BeerUseCase) : ViewModel() {
             viewStateData.value = ViewState.COMPLETED
             if (beers?.status == Result.Status.SUCCESS && beers.data?.size != 0) {
                 beersLiveData.value = beers.data
+            } else {
+                currentPage -= 1
             }
         }
     }

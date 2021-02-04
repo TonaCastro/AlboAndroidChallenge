@@ -7,17 +7,26 @@ xmlns:tools="http://schemas.android.com/tools">
         name="viewmodel"
         type="com.tonatiuhcastro.albochallenge.punkapi.presentation.viewmodel.BeersListViewModel" />
 </data>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".punkapi.presentation.view.BeersListFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_beers_rvcontainer"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_beer"
-        />
-</FrameLayout>
+        tools:context=".punkapi.presentation.view.BeersListFragment">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/list_service_fragment_swiperefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{() -> viewmodel.onRefresh()}"
+            app:refreshing="@{viewmodel.swipeRefreshLiveData}"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_beers_rvcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_beer"
+                />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
