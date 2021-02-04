@@ -13,5 +13,5 @@ import com.tonatiuhcastro.albochallenge.punkapi.domain.model.BeerModel
  * @modified by
  */
 interface BeerDetailRepository {
-    suspend fun getLocalBeer(): LiveData<Result<List<BeerModel>>>
+    suspend fun getLocalBeer(identifier: Int): LiveData<Result<BeerModel>>
 }

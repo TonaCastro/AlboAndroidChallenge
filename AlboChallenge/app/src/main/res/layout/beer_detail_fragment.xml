@@ -7,15 +7,19 @@ xmlns:tools="http://schemas.android.com/tools">
         name="viewmodel"
         type="com.tonatiuhcastro.albochallenge.punkapi.presentation.viewmodel.BeerDetailViewModel" />
 </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".punkapi.presentation.view.BeerDetailFragment">
 
     <ImageView
         android:id="@+id/detail_beer_imgbeer"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="160dp"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:contentDescription="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,12 +27,13 @@ xmlns:tools="http://schemas.android.com/tools">
         />
     <TextView
         android:id="@+id/detail_beer_tvtagline"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
         app:layout_constraintTop_toBottomOf="@id/detail_beer_imgbeer"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/titleBlueText"
+        android:text="@{viewmodel.beersLiveData.tagline}"
         tools:text="Imperial Black Belgian Ale."/>
 
     <TextView
@@ -36,10 +41,10 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@id/detail_beer_imgbeer"
-        app:layout_constraintStart_toEndOf="@id/detail_beer_tvtagline"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_tvtagline"
+        app:layout_constraintStart_toStartOf="parent"
         style="@style/titleBlueText"
+        android:text="@{viewmodel.beersLiveData.first_brewed}"
         tools:text="12/2021"/>
 
     <TextView
@@ -47,11 +52,23 @@ xmlns:tools="http://schemas.android.com/tools">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@id/detail_beer_tvtagline"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_tvbrewed"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/bodyBlueText"
+        style="@style/bodyDarkText"
+        android:text="@{viewmodel.beersLiveData.description}"
         tools:text="An Imperial Black Belgian Ale aged in old Invergordon Scotch whisky barrels with mountains of raspberries, tayberries and blackberries in each cask. Decadent but light and dry, this beer would make a fantastic base for ageing on pretty much any dark fruit - we used raspberries, tayberries and blackberries beause they were local."/>
 
+    <TextView
+        android:id="@+id/detail_beer_tvfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_tvdescription"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/bodyDarkText"
+        android:text="@{viewmodel.beersLiveData.foodPairing}"
+        tools:text="1comida\n chocolate\n papas\n"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
 

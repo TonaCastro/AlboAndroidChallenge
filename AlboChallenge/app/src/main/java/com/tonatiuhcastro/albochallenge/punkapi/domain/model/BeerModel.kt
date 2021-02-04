@@ -2,6 +2,7 @@ package com.tonatiuhcastro.albochallenge.punkapi.domain.model
 
 import com.google.gson.annotations.SerializedName
 import com.tonatiuhcastro.albochallenge.punkapi.presentation.model.BeerData
+import com.tonatiuhcastro.albochallenge.punkapi.presentation.model.BeerDetailData
 
 /**
  * @author tonatiuh
@@ -23,3 +24,10 @@ fun BeerModel.toBeerData() = BeerData(id,
     name,
     tagline,
     imageUrl)
+
+fun BeerModel.toBeerDetailData() = BeerDetailData(
+    tagline,
+    imageUrl,
+    description,
+    first_brewed,
+    foodPairing)

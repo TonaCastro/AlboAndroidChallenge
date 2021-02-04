@@ -27,4 +27,6 @@ fun BeerEntity.toBeerModel() =  BeerModel(id ,
     imageUrl,
     description,
     first_brewed,
-    "")
+    foodPairing.replace(",","\n")
+        .replace("[","")
+        .replace("]",""))

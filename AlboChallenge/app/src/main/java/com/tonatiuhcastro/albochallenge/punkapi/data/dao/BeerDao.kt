@@ -19,6 +19,9 @@ interface BeerDao {
     @Query("select * from beer")
     suspend fun get(): List<BeerEntity>
 
+    @Query("select * from beer where id = :identifier")
+    suspend fun getUnique(identifier: Int): List<BeerEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(user: BeerEntity)
 }

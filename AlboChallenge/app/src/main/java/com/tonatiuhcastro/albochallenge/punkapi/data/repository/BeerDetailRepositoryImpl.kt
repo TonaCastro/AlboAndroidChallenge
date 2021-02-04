@@ -20,15 +20,15 @@ import java.lang.Exception
  * @modified by
  */
 class BeerDetailRepositoryImpl(private val beerDao: BeerDao): BeerDetailRepository {
-    override suspend fun getLocalBeer(): LiveData<Result<List<BeerModel>>> {
+    override suspend fun getLocalBeer(identifier: Int): LiveData<Result<BeerModel>> {
 
-        val data = MutableLiveData<Result<List<BeerModel>>>()
+        val data = MutableLiveData<Result<BeerModel>>()
         try {
-            val lstBeers = beerDao.get()
+            val lstBeers = beerDao.getUnique(identifier)
             val beers = lstBeers.map {
                 it.toBeerModel()
             }
-            data.value = Result.success(beers)
+            data.value = Result.success(beers.last())
         } catch (exception: Exception){
             data.value = Result.exception(ResultException(ValidationError.EXCEPTION,"", exception))
         }

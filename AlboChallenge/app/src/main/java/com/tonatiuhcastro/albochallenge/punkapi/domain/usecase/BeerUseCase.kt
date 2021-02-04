@@ -30,8 +30,4 @@ class BeerUseCase(private val repository: BeerRepository ) {
         }
         return data
     }
-
-    suspend fun getBeerLocal() {
-        repository.getLocalBeers()
-    }
 }
