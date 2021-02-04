@@ -7,14 +7,12 @@ import com.tonatiuhcastro.albochallenge.common.domain.Result
 import com.tonatiuhcastro.albochallenge.common.domain.ResultException
 import com.tonatiuhcastro.albochallenge.common.domain.ValidationError
 import com.tonatiuhcastro.albochallenge.punkapi.data.dao.BeerDao
+import com.tonatiuhcastro.albochallenge.punkapi.data.entity.BeerEntity
 import com.tonatiuhcastro.albochallenge.punkapi.data.entity.toBeerModel
 import com.tonatiuhcastro.albochallenge.punkapi.data.network.manager.BeerNetworkImpl
-import com.tonatiuhcastro.albochallenge.punkapi.data.network.response.toBeerModel
+import com.tonatiuhcastro.albochallenge.punkapi.data.network.response.toBeerEntity
 import com.tonatiuhcastro.albochallenge.punkapi.domain.model.BeerModel
 import com.tonatiuhcastro.albochallenge.punkapi.domain.repository.BeerRepository
-import com.tonatiuhcastro.albochallenge.transactions.data.network.manager.TransactionNetworkImpl
-import com.tonatiuhcastro.albochallenge.transactions.data.network.response.toTransactionModel
-import com.tonatiuhcastro.albochallenge.transactions.domain.model.TransactionModel
 import java.lang.Exception
 
 /**
@@ -33,11 +31,16 @@ class BeerRepositoryImpl(private val beerDao: BeerDao): BeerRepository {
             serviceNetwork.onCreateConnection(NetworkConstants.HOST_PUNKAPI)
             val serviceResponse = serviceNetwork.getBeers(page, items)
             val listTransactions: List<BeerModel> = serviceResponse.map {
-                it.toBeerModel()
+                saveBeer(beerDao, it.toBeerEntity())
             }
             data.value = Result.success(listTransactions)
         } catch (exception: Exception){
-            data.value = Result.exception(ResultException(ValidationError.EXCEPTION,"", exception))
+            val localBeers = getLocalBeers()
+            if (getLocalBeers().value?.data?.isEmpty() == true) {
+                data.value = Result.exception(ResultException(ValidationError.EXCEPTION,"", exception))
+            } else {
+                return localBeers
+            }
         }
         return data
     }
@@ -54,5 +57,10 @@ class BeerRepositoryImpl(private val beerDao: BeerDao): BeerRepository {
             data.value = Result.exception(ResultException(ValidationError.EXCEPTION,"", exception))
         }
         return data
+    }
+
+    suspend fun saveBeer(beerDao: BeerDao, entity: BeerEntity): BeerModel {
+        beerDao.save(entity)
+        return entity.toBeerModel()
     }
 }

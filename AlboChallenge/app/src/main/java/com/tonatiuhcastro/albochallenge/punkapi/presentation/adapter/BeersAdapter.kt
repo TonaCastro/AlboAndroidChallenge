@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.item_beer.view.*
  * @modified by
  */
 
-class BeersAdapter(private val beers: List<BeerData>, private val listener: (String)->Unit):
+class BeersAdapter(private val beers: List<BeerData>, private val listener: (BeerData)->Unit):
     RecyclerView.Adapter<BeersAdapter.BeersViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,24 +40,27 @@ class BeersAdapter(private val beers: List<BeerData>, private val listener: (Str
         position: Int
     ) {
         val beer = beers[position]
-        holder.binding.itemBeerTvName.text =  beer.name
-        holder.binding.itemMonthTvtagline.text = beer.tagline
-
-        Glide.with(holder.binding.itemBeerImgbeer)
-            .load(beer.imageUrl)
-            .fitCenter()
-            .into(holder.binding.itemBeerImgbeer)
-
-        holder.binding.itemBeerContainer.setOnClickListener{
-            listener.invoke(it.item_beer_tvName.text.toString())
-        }
-
+        holder.bind(beer)
     }
 
     override fun getItemCount(): Int = beers.size
 
     inner class BeersViewHolder(view: ItemBeerBinding) : RecyclerView.ViewHolder(view.root) {
         var binding: ItemBeerBinding = view
+
+        fun bind(beer: BeerData) {
+            binding.itemBeerTvName.text =  beer.name
+            binding.itemMonthTvtagline.text = beer.tagline
+
+            Glide.with(binding.itemBeerImgbeer)
+                .load(beer.imageUrl)
+                .fitCenter()
+                .into(binding.itemBeerImgbeer)
+
+            binding.itemBeerContainer.setOnClickListener{
+                listener.invoke(beer)
+            }
+        }
     }
 
 }

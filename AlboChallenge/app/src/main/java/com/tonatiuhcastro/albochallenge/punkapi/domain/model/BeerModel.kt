@@ -17,7 +17,7 @@ data class BeerModel (val id: Int,
                       val imageUrl: String,
                       val description : String,
                       val first_brewed: String,
-                      val foodPairing: List<String>)
+                      val foodPairing: String)
 
 fun BeerModel.toBeerData() = BeerData(id,
     name,

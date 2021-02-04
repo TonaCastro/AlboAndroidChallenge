@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="viewmodel"
+        type="com.tonatiuhcastro.albochallenge.punkapi.presentation.viewmodel.BeerDetailViewModel" />
+</data>
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".punkapi.presentation.view.BeerDetailFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/detail_beer_imgbeer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="120dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:id="@+id/detail_beer_tvtagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_imgbeer"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/titleBlueText"
+        tools:text="Imperial Black Belgian Ale."/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/detail_beer_tvbrewed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_imgbeer"
+        app:layout_constraintStart_toEndOf="@id/detail_beer_tvtagline"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/titleBlueText"
+        tools:text="12/2021"/>
+
+    <TextView
+        android:id="@+id/detail_beer_tvdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        app:layout_constraintTop_toBottomOf="@id/detail_beer_tvtagline"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/bodyBlueText"
+        tools:text="An Imperial Black Belgian Ale aged in old Invergordon Scotch whisky barrels with mountains of raspberries, tayberries and blackberries in each cask. Decadent but light and dry, this beer would make a fantastic base for ageing on pretty much any dark fruit - we used raspberries, tayberries and blackberries beause they were local."/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

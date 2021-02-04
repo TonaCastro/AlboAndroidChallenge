@@ -21,10 +21,10 @@ data class BeerEntity(@PrimaryKey val id: Int,
                       val first_brewed: String,
                       val foodPairing: String)
 
-fun BeerEntity.toBeerModel() =  BeerModel(id ?: 0,
-    name ?: "",
-    tagline ?: "",
-    imageUrl?: "",
-    description ?:"",
-    first_brewed?: "",
-    foodPairing.split(","))
+fun BeerEntity.toBeerModel() =  BeerModel(id ,
+    name,
+    tagline,
+    imageUrl,
+    description,
+    first_brewed,
+    "")

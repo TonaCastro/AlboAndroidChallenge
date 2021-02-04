@@ -1,6 +1,7 @@
 package com.tonatiuhcastro.albochallenge.punkapi.data.network.response
 
 import com.google.gson.annotations.SerializedName
+import com.tonatiuhcastro.albochallenge.punkapi.data.entity.BeerEntity
 import com.tonatiuhcastro.albochallenge.punkapi.domain.model.BeerModel
 
 /**
@@ -19,10 +20,10 @@ data class BeerResponse(@SerializedName("name") val name: String?,
                         @SerializedName("first_brewed") val first_brewed: String?,
                         @SerializedName("food_pairing") val foodPairing: List<String>?)
 
-fun BeerResponse.toBeerModel() =  BeerModel(id ?: 0,
-                                            name ?: "",
-                                            tagline ?: "",
-                                            imageUrl?: "",
-                                            description ?:"",
-                                            first_brewed?: "",
-                                            foodPairing ?: ArrayList())
+fun BeerResponse.toBeerEntity() = BeerEntity(id ?: 0,
+    name ?: "",
+    tagline ?: "",
+    imageUrl?: "",
+    description ?:"",
+    first_brewed?: "",
+    foodPairing.toString())
