@@ -10,5 +10,5 @@ package com.tonatiuhcastro.albochallenge.common.constants
  */
 object NetworkConstants {
     const val HOST_TRANSACTIONS = "https://gist.github.com/"
-    const val HOST_PUNKAPI = "https://api.punkapi.com/"
+    const val HOST_PUNKAPI = "https://api.punkapi.com/v2/"
 }

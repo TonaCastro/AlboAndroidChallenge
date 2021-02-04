@@ -26,13 +26,11 @@ class BeersListViewModel(private val beerUseCase: BeerUseCase) : ViewModel() {
     private fun getBeers(page: Int, items: Int) {
         viewStateData.value = ViewState.LOADING
         viewModelScope.launch {
-            beerUseCase.getBeerNetwork(page, items)
+           val beers = beerUseCase.getBeerNetwork(page, items).value
             viewStateData.value = ViewState.COMPLETED
-            /*
-            if (transactions?.status == Result.Status.SUCCESS && transactions.data?.size != 0) {
-                transactionsLiveData.value = transactions.data
+            if (beers?.status == Result.Status.SUCCESS && beers.data?.size != 0) {
+                beersLiveData.value = beers.data
             }
-             */
         }
     }
 }

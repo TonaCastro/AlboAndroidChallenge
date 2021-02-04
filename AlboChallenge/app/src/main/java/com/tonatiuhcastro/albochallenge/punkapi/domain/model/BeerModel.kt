@@ -1,6 +1,7 @@
 package com.tonatiuhcastro.albochallenge.punkapi.domain.model
 
 import com.google.gson.annotations.SerializedName
+import com.tonatiuhcastro.albochallenge.punkapi.presentation.model.BeerData
 
 /**
  * @author tonatiuh
@@ -17,3 +18,8 @@ data class BeerModel (val id: Int,
                       val description : String,
                       val first_brewed: String,
                       val foodPairing: List<String>)
+
+fun BeerModel.toBeerData() = BeerData(id,
+    name,
+    tagline,
+    imageUrl)

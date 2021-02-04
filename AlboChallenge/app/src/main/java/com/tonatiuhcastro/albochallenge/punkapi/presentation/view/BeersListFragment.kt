@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.tonatiuhcastro.albochallenge.R
 import com.tonatiuhcastro.albochallenge.databinding.BeersListFragmentBinding
@@ -22,6 +23,10 @@ class BeersListFragment : Fragment() {
     private lateinit var viewModel: BeersListViewModel
     private lateinit var binding: BeersListFragmentBinding
 
+    val onBeerClicked: (item: String) -> Unit = { beer ->
+        goToDetail(beer)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,8 +39,6 @@ class BeersListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(BeersListViewModel::class.java)
-        // TODO: Use the ViewModel
         activity?.let {
             val factory = BeerViewModelFactory(it)
             viewModel = ViewModelProvider(this, factory).get(BeersListViewModel::class.java)
@@ -45,21 +48,21 @@ class BeersListFragment : Fragment() {
     }
 
     private fun manageObservers() {
-        goToScreens()
         getBeers()
     }
 
     private fun getBeers() {
         viewModel.getBeersLiveData().observe(viewLifecycleOwner, { list ->
             list?.let { listData ->
-                val adapter = context?.let { it -> BeersAdapter(listData, it) }
+                val adapter = context?.let { it -> BeersAdapter(listData, onBeerClicked) }
                 binding.listBeersRvcontainer.adapter = adapter
             }
         })
     }
 
-    private fun goToScreens() {
+    private fun goToDetail(beerSelected: String) {
 
+        Toast.makeText(context, beerSelected, Toast.LENGTH_LONG).show()
     }
 
 }
